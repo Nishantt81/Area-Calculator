@@ -1,0 +1,46 @@
+<div class="calculator">
+    <h1>Area Calculator</h1>
+<form (ngSubmit)="calculate()">
+  <div class="input-group">
+    <input type="number" [(ngModel)]="currentValue" (input)="updateLength()" placeholder="Enter length" name="currentValue" />
+    <select name="units" [(ngModel)]="selectedUnit" (change)="updateLength()">
+      <option value="Inch">Inch</option>
+      <option value="Mm">Mm</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="nb">Nut Bolt (NB):</label>
+    <select id="nb" [(ngModel)]="selectedNB" name="nb" required>
+      <option *ngFor="let item of nutBoltData" [value]="item.NB">{{ item.NB }}</option>
+    </select>
+  </div>
+
+  <button type="submit">Calculate</button>
+</form>
+
+  
+    <div *ngIf="result">
+      <p><strong>Stud Area: </strong> {{ result.studArea }}</p>
+      <p><strong>Stud + 1 Nut Area: </strong> {{ result.studPlusNut1Area }}</p>
+      <p><strong>Stud + 2 Nut Area: </strong> {{ result.studPlusNut2Area }}</p>
+      <p><strong>Bolt Head Area: </strong> {{ result.boltHeadArea }}</p>
+      <p><strong>Bolt Aea: </strong>{{result.boltArea}}</p>
+      <p><strong>Bolt + 1 Nut Area: </strong>{{result.boltPlus1NutArea}}</p>
+      <p><strong>Allen Bolt: </strong>{{result.allenBoltArea}}</p>
+      <p><strong>Eye Bolt: </strong>{{result.eyeBoltArea}}</p>
+      <p><strong>Weight Stud: </strong>{{result.weightStud}}</p>
+      <p><strong>Weight Nut: </strong>{{result.weightnutkg}}</p>
+      <p><strong>Weight Bolt: </strong>{{result.weightBolt}}</p>
+      <p><strong>Washer Area: </strong>{{result.washerArea}}</p>
+      <p><strong>Bolt +1 Nut + 2 Washer: </strong>{{result.boltPlus1NutPlus2Washer}}</p>
+      <p><strong>Bolt + 2 Nut+ 2 Washer: </strong>{{result.boltPlus2NutPlus2Washer}}</p>
+      <p><strong>Stud + 2 nut weight: </strong>{{result.studplus2nutwt}}</p>
+      <p><strong>stud + 3 nut area: </strong>{{result.studPlus3NutArea}}</p>
+      <p><strong>Stud + 3 nut weight: </strong>{{result.studplus3nutwt}}</p>
+    </div>
+
+
+  </div>
+
+

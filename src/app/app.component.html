@@ -1,0 +1,19 @@
+
+@if (inchBolt == true) {
+<app-calculator></app-calculator>
+}
+
+@if(mmBolt == true){
+<app-mmboltcalculator></app-mmboltcalculator>
+}
+
+<div class="action-buttons">
+    <button [ngClass]="mmboltbutton" class="mmbolt"  (click)="switchcalculatorMMBOLT()" >MM Bolt</button>
+    <button [ngClass]="inchboltbutton" class="inchbolt"(click)="switchcalculatorINCHBOLT()" >Inch Bolt</button>
+</div>
+
+
+
+
+
+<router-outlet></router-outlet>

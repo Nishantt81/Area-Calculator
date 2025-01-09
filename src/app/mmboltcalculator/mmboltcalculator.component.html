@@ -1,0 +1,43 @@
+<div class="calculator-container">
+    <h2>MM Bolt Calculator</h2>
+<form (ngSubmit)="calculate()">
+    <div class="input-group">
+        <label for="">Length</label>
+                <input type="number" [(ngModel)]="currentValue" (input)="updateLength()" placeholder="Enter length"
+                    name="currentValue" />
+        <select name="units" [(ngModel)]="selectedUnit" (change)="updateLength()">
+            <option value="Inch">Inch</option>
+            <option value="Mm">Mm</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="nb">Nut Bolt (NB):</label>
+        <select id="nb" [(ngModel)]="selectedNB" name="nb" required>
+            <option *ngFor="let item of mmBoltData" [value]="item.NB">{{ item.NB }}</option>
+        </select>
+    </div>
+
+    <button type="submit">Calculate</button>
+</form>
+    <!-- Results -->
+    <div *ngIf="result" class="results-container">
+        <h3>Calculation Results</h3>
+        <p><strong>Stud Area: </strong>{{ result.studarea }} sq. in.</p>
+        <p><strong>Stud + 1 Nut Area: </strong>{{ result.studplus1nutarea }} sq. in.</p>
+        <p><strong>Stud + 2 Nut Area: </strong>{{ result.studplus2nutarea }} sq. in.</p>
+        <p><strong>Bolt Head Area: </strong>{{ result.bolthead }} sq. in.</p>
+        <p><strong>Bolt Area: </strong>{{ result.boltarea }} sq. in.</p>
+        <p><strong>Allen Bolt Area: </strong>{{ result.allenboltarea }} sq. in.</p>
+        <p><strong>Area (mm²): </strong>{{ result.areammsq }} mm²</p>
+        <p><strong>Washer Area: </strong>{{ result.washerarea }} sq. in.</p>
+        <p><strong>Bolt + 1 Nut Area: </strong>{{ result.boltplus1nut }} sq. in.</p>
+        <p><strong>Bolt + 1 Nut + 2 Washer Area: </strong>{{ result.boltplus1nutplus2washers }} sq. in.</p>
+        <p><strong>Weight of Stud (kg): </strong>{{ result.weightstudkg }} kg</p>
+        <p><strong>Weight of Nut (kg): </strong>{{ result.weightnutkg }} kg</p>
+        <p><strong>Weight of Bolt (kg): </strong>{{ result.weightboltkg }} kg</p>
+        <p><strong>Stud + 2 Nut + 2 Washer Area: </strong>{{ result.studplus2nutpluswasher }} sq. in.</p>
+    </div>
+
+
+<router-outlet></router-outlet>
